@@ -1,0 +1,530 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Celebrate Jewish Life</title>
+  <style>
+    :root {
+      --bg: #f7f8fc;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #5b6472;
+      --blue: #1d4ed8;
+      --blue-soft: #dbeafe;
+      --gold: #d4a017;
+      --border: #e5e7eb;
+      --shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+      --radius: 22px;
+      --max: 1160px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #f9fbff 0%, #eef4ff 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(12px);
+      background: rgba(247, 248, 252, 0.86);
+      border-bottom: 1px solid rgba(229, 231, 235, 0.85);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+    }
+
+    .star {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--blue-soft), #fff8dd);
+      display: grid;
+      place-items: center;
+      box-shadow: var(--shadow);
+      font-size: 20px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: var(--blue);
+      color: white;
+      font-weight: 700;
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      padding: 72px 0 48px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 14px;
+      background: var(--blue-soft);
+      color: var(--blue);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(40px, 6vw, 64px);
+      line-height: 1.02;
+      margin: 0 0 18px;
+      letter-spacing: -1.5px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--muted);
+      margin: 0 0 24px;
+      max-width: 650px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .secondary {
+      background: white;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .stat {
+      background: rgba(255,255,255,0.75);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 26px;
+      margin-bottom: 4px;
+    }
+
+    .visual {
+      background: radial-gradient(circle at top left, #ffffff 0%, #dbeafe 45%, #bfdbfe 100%);
+      border: 1px solid rgba(29, 78, 216, 0.12);
+      border-radius: 30px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      min-height: 460px;
+      display: grid;
+      gap: 16px;
+      align-content: start;
+    }
+
+    .quote-card, .mini-card, .feature, .story, .action-card {
+      background: rgba(255,255,255,0.88);
+      border: 1px solid rgba(229,231,235,0.95);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .quote-card {
+      padding: 24px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .mini-card {
+      padding: 20px;
+    }
+
+    .section {
+      padding: 34px 0 10px;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .section h2 {
+      font-size: clamp(28px, 4vw, 40px);
+      margin: 0;
+      letter-spacing: -1px;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      max-width: 700px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .feature {
+      padding: 24px;
+    }
+
+    .icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #eff6ff, #fff7d6);
+      font-size: 22px;
+      margin-bottom: 16px;
+    }
+
+    .feature h3, .story h3, .action-card h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+
+    .feature p, .story p, .action-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .stories {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .story {
+      padding: 24px;
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-bottom: 32px;
+    }
+
+    .action-card {
+      padding: 24px;
+    }
+
+    .footer {
+      padding: 34px 0 56px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-box {
+      padding: 20px 22px;
+      background: rgba(255,255,255,0.85);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    ul.clean {
+      margin: 14px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .features,
+      .actions,
+      .stories {
+        grid-template-columns: 1fr;
+      }
+
+      .stats,
+      .mini-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      h1 {
+        font-size: 38px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <div class="star">✡️</div>
+        <div>Celebrate Jewish Life</div>
+      </div>
+      <div class="nav-links">
+        <a href="#heritage">Heritage</a>
+        <a href="#voices">Voices</a>
+        <a href="#learn">Learn</a>
+        <a href="#support">Support</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">Pride • History • Culture • Community</span>
+        <h1>Honor Jewish strength, wisdom, resilience, and joy.</h1>
+        <p>
+          This landing page is built to celebrate Jewish history, elevate Jewish voices,
+          highlight enduring traditions, and create a welcoming place for education,
+          solidarity, and community support.
+        </p>
+        <div class="hero-actions">
+          <a class="cta" href="#learn">Explore the Story</a>
+          <a class="cta secondary" href="#support">Take Action</a>
+        </div>
+        <div class="stats">
+          <div class="stat">
+            <strong>4,000+</strong>
+            Years of rich cultural and spiritual heritage.
+          </div>
+          <div class="stat">
+            <strong>Global</strong>
+            A worldwide community shaping scholarship, art, science, and public life.
+          </div>
+          <div class="stat">
+            <strong>Enduring</strong>
+            A legacy of perseverance through adversity and renewal.
+          </div>
+        </div>
+      </div>
+
+      <div class="visual">
+        <div class="quote-card">
+          “To celebrate Jewish life is to celebrate memory, learning, family, faith,
+          humor, service, and the courage to keep building.”
+        </div>
+        <div class="mini-grid">
+          <div class="mini-card">
+            <h3>Tradition</h3>
+            <p>From Shabbat tables to festivals and sacred texts, tradition carries identity forward.</p>
+          </div>
+          <div class="mini-card">
+            <h3>Contribution</h3>
+            <p>Jewish communities have profoundly influenced literature, ethics, medicine, music, and innovation.</p>
+          </div>
+        </div>
+        <div class="mini-card">
+          <h3>Belonging</h3>
+          <p>This site can be expanded with stories, organizations, educational resources, event calendars, featured leaders, donation links, and community spotlights.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" id="heritage">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Why this message matters</h2>
+            <p class="section-sub">A pro-Jewish website can be uplifting, educational, and deeply human—showing beauty, resilience, scholarship, family, and cultural richness.</p>
+          </div>
+        </div>
+
+        <div class="features">
+          <article class="feature">
+            <div class="icon">📚</div>
+            <h3>Celebrate learning</h3>
+            <p>Feature Jewish texts, thinkers, educators, and the long tradition of study, debate, and intellectual curiosity.</p>
+          </article>
+          <article class="feature">
+            <div class="icon">🕊️</div>
+            <h3>Promote dignity</h3>
+            <p>Showcase messages of respect, safety, shared humanity, and solidarity against hatred and antisemitism.</p>
+          </article>
+          <article class="feature">
+            <div class="icon">🎉</div>
+            <h3>Highlight culture</h3>
+            <p>Include music, food, holidays, art, language, family customs, humor, and stories from Jewish communities.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="voices">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Featured story blocks</h2>
+            <p class="section-sub">These can be swapped out with real people, organizations, interviews, or spotlight pieces.</p>
+          </div>
+        </div>
+
+        <div class="stories">
+          <article class="story">
+            <h3>Jewish families and continuity</h3>
+            <p>Tell stories about parents, grandparents, recipes, rituals, and the small traditions that keep identity alive across generations.</p>
+          </article>
+          <article class="story">
+            <h3>Jewish creativity and leadership</h3>
+            <p>Feature artists, scientists, business leaders, rabbis, volunteers, teachers, and neighbors making a positive impact.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="learn">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Content ideas to add next</h2>
+            <p class="section-sub">This page is intentionally built as a strong foundation you can grow into a full website.</p>
+          </div>
+        </div>
+
+        <div class="actions">
+          <article class="action-card">
+            <h3>Education hub</h3>
+            <p>Add beginner-friendly explainers on holidays, values, customs, history, and Jewish contributions to the world.</p>
+            <ul class="clean">
+              <li>Jewish holiday guides</li>
+              <li>Glossary of key terms</li>
+              <li>Recommended books and films</li>
+            </ul>
+          </article>
+          <article class="action-card">
+            <h3>Community directory</h3>
+            <p>List synagogues, nonprofits, student groups, cultural centers, and volunteer opportunities.</p>
+            <ul class="clean">
+              <li>Local events calendar</li>
+              <li>Support resources</li>
+              <li>Ways to get involved</li>
+            </ul>
+          </article>
+          <article class="action-card" id="support">
+            <h3>Solidarity section</h3>
+            <p>Create a respectful space for allyship, anti-hate resources, and practical ways to support Jewish neighbors and communities.</p>
+            <ul class="clean">
+              <li>Shareable statements of support</li>
+              <li>Partner organizations</li>
+              <li>Donation and volunteer links</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-box">
+        Built as a clean one-page website for a free hosting platform. Replace placeholder copy with your own mission, stories, links, and media.
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
